@@ -9,15 +9,15 @@ from sqlalchemy import create_engine
 Base = declarative_base()
 
 book_author = db.Table('book_author',
-    db.Column('book_id', db.ForeignKey('ksiazka.id')),
-    db.Column('author_id', db.ForeignKey('autor.id'))
+    db.Column('book_id', db.ForeignKey('book.id')),
+    db.Column('author_id', db.ForeignKey('author.id'))
 )
 
 class Book(db.Model):
     __tablename__  = 'book'
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(100), index = True)
-#many-to-many
+
     authors = db.relationship('Author', secondary = book_author, backref ='books', lazy = 'dynamic')
     is_available = db.Column(db.Boolean, default=True)
 
