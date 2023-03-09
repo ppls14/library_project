@@ -1,0 +1,23 @@
+{% extends "index.html" %}
+{% block content %}
+<p>
+    <form action = "/find_book" method = "POST">
+        Podaj id: <input type = "text" id = "id" name = "id"><br>
+        <input type = "submit" value = "edytuj">
+    </form>
+</p>
+{% if authorName %}
+<p>
+    <form action = "/update" method = "POST">
+        id:<input type = "text" id = "id" name = "id" value = {{id}}><br>
+        Tytuł: <input type = "text" id = "title" name = "title" value = {{title}}><br>
+        Imie autora: <input type = "text" id = "authorName" name = "authorName" value = {{authorName}}><br>
+        Nazwisko autora: <input type = "text" id = "authorSurname" name = "authorSurname" value = {{authorSurname}}><br>
+        Imie drugiego autora: <input type = "text" id = "authorName2" name = "authorName2" value = {{authorName2}}><br>
+        Nazwisko drugiego autora: <input type = "text" id = "authorSurname2" name = "authorSurname2" value = {{authorSurname2}}><br>
+        Dostępna: <input type = "checkbox" id = "available" name = "available" {% if available %} checked {% endif %}><br>
+        <input type = "submit" value = "zapisz">
+    </form>
+</p>
+{% endif %}
+{% endblock %}

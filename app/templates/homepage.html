@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+{% block content %}
+{% for book in all_books %}
+<div>
+   <p>
+       {{book.id}} {{ book.title}} {% for author in book.authors.all() %} {{author }} {% endfor %} 
+       {% if book.is_available %} Dostępna {% else %} Niedostępna {% endif %}
+   </p>
+</div>
+{% endfor %}
+{% endblock %}
